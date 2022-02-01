@@ -1,4 +1,5 @@
-//Atividade 3 - Jantar dos 
+//Atividade 3 - Jantar dos Filosofos
+
 
 #include  <stdio.h>
 #include <stdlib.h>
