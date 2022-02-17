@@ -81,3 +81,94 @@ main(){
     getch();
 
 }
+
+===============================================
+        
+ //Função sleep
+ 
+ public class SleepTest {
+    
+    
+
+    private static final Lock lock = new ReentrantLock();
+
+    public static void main(String[] args) throws InterruptedException {
+    
+    
+        Thread threadA = new Thread(new Runnable(){
+    
+    
+            public void run(){
+    
+    
+                lock.lock(); // 获取独占锁
+                try{
+    
+    
+                    System.out.println("child threadA is in sleep");
+                    Thread.sleep(2000);
+                    System.out.println("child threadA is awaked");
+                }catch (InterruptedException e) {
+    
+    
+                    e.printStackTrace();
+                }finally {
+    
+    
+                    lock.unlock(); // 释放锁
+                }
+            }
+        });
+
+        Thread threadB = new Thread(new Runnable(){
+    
+    
+            public void run(){
+    
+    
+                lock.lock(); // 获取独占锁
+                try{
+    
+    
+                    System.out.println("child threadB is in sleep");
+                    Thread.sleep(2000);
+                    System.out.println("child threadB is awaked");
+                }catch (InterruptedException e) {
+    
+    
+                    e.printStackTrace();
+                }finally {
+    
+    
+                    lock.unlock(); // 释放锁
+                }
+            }
+        });
+
+        // 启动线程
+        threadA.start();
+        threadB.start();
+    }
+}
+
+=================================================
+//função strtok()
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(){
+
+    char palavra[50] = {"Bom!dia.simpatia Bom dia"};
+    char *pt;
+
+    pt = strtok(palavra, "!. ");
+    while(pt){
+        printf("token: %s\n", pt);
+        pt = strtok(NULL, "!. ");
+    }
+
+    return 0;
+}
